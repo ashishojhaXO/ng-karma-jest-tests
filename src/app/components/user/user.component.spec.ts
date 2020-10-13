@@ -23,7 +23,8 @@ describe('UserComponent', () => {
                 UserComponent
             ],
             providers: [
-                { provide: UserService, useClass: UserServiceMock }
+                // { provide: UserService, useClass: UserServiceMock },
+                UserService
             ]
         }).compileComponents().then(() => {
             fixture = TestBed.createComponent(UserComponent);
@@ -32,6 +33,7 @@ describe('UserComponent', () => {
 
         userService = TestBed.get(UserService);
         httpMock = TestBed.get(HttpTestingController);
+
     }));
 
     it(`should have one user`, async(() => {
