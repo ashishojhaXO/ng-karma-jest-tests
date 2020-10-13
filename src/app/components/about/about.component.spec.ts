@@ -3,6 +3,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { AboutComponent } from './about.component';
 
 describe('AboutComponent', () => {
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -16,4 +17,5 @@ describe('AboutComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app.text).toEqual('about page');
   }));
+
 });

@@ -1,8 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+
 
 @Injectable()
 export class UserService {
-  constructor() { }
+    
+
+  constructor(
+      private http: HttpClient
+  ) { }
 
   getUsers(): Array<{}> {
       return [
@@ -16,4 +24,9 @@ export class UserService {
           }
       ];
   }
+
+  getUsersFromServer(): Observable<User[]> {
+      return this.http.get<User[]>(`${this.GET_USERS}`)
+  }
+
 }
