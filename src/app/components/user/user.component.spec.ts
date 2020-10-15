@@ -26,18 +26,24 @@ describe('UserComponent', () => {
                 // { provide: UserService, useClass: UserServiceMock },
                 UserService
             ]
-        }).compileComponents().then(() => {
+        })
+        .compileComponents().then(() => {
             fixture = TestBed.createComponent(UserComponent);
             comp = fixture.componentInstance; // UserComponent test instance
         });
 
-        userService = TestBed.get(UserService);
+        // userService = TestBed.get(UserService);
         httpMock = TestBed.get(HttpTestingController);
+
+        console.log("fix: ", fixture, " comp: ", comp);
 
     }));
 
-    it(`should have one user`, async(() => {
-        expect(comp.users.length).toEqual(1);
+    var v = 2;
+
+    it(`should have ${v} user`, async((args) => {
+      console.log("arg: ", args);
+        expect(comp.users.length).toEqual(v);
     }));
 
     it(`html should render one user`, async(() => {
@@ -50,23 +56,27 @@ describe('UserComponent', () => {
     it(`should fetch posts as an Observable`, async(inject([HttpTestingController, UserService],
     (httpClient: HttpTestingController, userService: UserService) => {
 
-
       console.log("userSER: ", userService);
-
 
       userService.getUsersFromServer()
         .subscribe((posts: any) => {
-          expect(posts.length).toBe(2);
+          
+          console.log("posts: ", posts);
+
+          expect(posts.length).toBe(3);
         });
 
       let req = httpMock.expectOne('https://jsonplaceholder.typicode.com/users');
+
+      console.log( "htM : ", httpMock);
+
       expect(req.request.method).toBe("GET");
 
-    //   req.flush(userItem);
-      httpMock.verify();
+     req.flush(userService.users);
+     httpMock.verify();
 
     })
     
-    ));
+  ));
 
 });

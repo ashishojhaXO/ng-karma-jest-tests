@@ -9,8 +9,10 @@ import { UserService } from './user.service';
 export class UserComponent {
   text = 'user page';
   users;
+  usersFromServer;
 
   constructor(private userService: UserService) {
     this.users = this.userService.getUsers();
+    this.usersFromServer = this.userService.getUsersFromServer();
   }
 }
