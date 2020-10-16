@@ -2,18 +2,27 @@ import { UserService } from './user.service';
 import { TestBed, async, ComponentFixture, inject } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { BrowserModule, By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
-
-
+import { Component, DebugElement } from '@angular/core';
 import { UserComponent } from './user.component';
 import { UserServiceMock } from '../../mocks/user.service.mock';
 
+// @Component({
+//   selector: 'app-bank-account',
+//   inputs: ['bankName', 'id: account-id'],
+//   template: `
+//     Bank Name: {{ bankName }}
+//     Account Id: {{ id }}
+//   `
+// })
 describe('UserComponent', () => {
     let comp: UserComponent;
+
     let fixture: ComponentFixture<UserComponent>;
 
     let userService: UserService;
     let httpMock: HttpTestingController;
+
+    debugger;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -21,20 +30,22 @@ describe('UserComponent', () => {
                 HttpClientTestingModule
             ],
             declarations: [
-                UserComponent
+                // UserComponent
             ],
             providers: [
                 // { provide: UserService, useClass: UserServiceMock },
-                UserService
+                UserService,
+                UserComponent
             ]
         })
-        .compileComponents().then(() => {
-            fixture = TestBed.createComponent(UserComponent);
-            comp = fixture.componentInstance; // UserComponent test instance
-        });
+        // .compileComponents().then(() => {
+        //     fixture = TestBed.createComponent(UserComponent);
+        //     comp = fixture.componentInstance; // UserComponent test instance
+        // });
 
+        comp = TestBed.get(UserComponent);
         // userService = TestBed.get(UserService);
-        httpMock = TestBed.get(HttpTestingController);
+        // httpMock = TestBed.get(HttpTestingController);
 
         console.log("fix: ", fixture, " comp: ", comp);
 
