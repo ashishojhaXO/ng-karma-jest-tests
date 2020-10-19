@@ -35,14 +35,14 @@ describe('UserComponent', () => {
         // userService = TestBed.get(UserService);
         httpMock = TestBed.get(HttpTestingController);
 
-        console.log("fix: ", fixture, " comp: ", comp);
+        // console.log("fix: ", fixture, " comp: ", comp);
 
     }));
 
     var v = 2;
 
     it(`should have ${v} user`, async((args) => {
-      console.log("arg: ", args);
+      // console.log("arg: ", args);
         expect(comp.users.length).toEqual(v);
     }));
 
@@ -57,19 +57,19 @@ describe('UserComponent', () => {
     it(`should fetch posts as an Observable`, async(inject([HttpTestingController, UserService],
     (httpClient: HttpTestingController, userService: UserService) => {
 
-      console.log("userSER: ", userService);
+      // console.log("userSER: ", userService);
 
       userService.getUsersFromServer()
         .subscribe((posts: any) => {
           
-          console.log("posts: ", posts);
+          // console.log("posts: ", posts);
 
           expect(posts.length).toBe(3);
         });
 
       let req = httpMock.expectOne('https://jsonplaceholder.typicode.com/users');
 
-      console.log( "htM : ", httpMock);
+      // console.log( "htM : ", httpMock);
 
       expect(req.request.method).toBe("GET");
 
