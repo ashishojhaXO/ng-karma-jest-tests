@@ -48,41 +48,37 @@ describe('UserComponent', () => {
         // userService = TestBed.get(UserService);
         httpMock = TestBed.get(HttpTestingController);
 
-        console.log("fix: ", fixture, " comp: ", comp);
+        // console.log("fix: ", fixture, " comp: ", comp);
 
     }));
 
     var v = 2;
 
     it(`should have ${v} user`, async((args) => {
-      console.log("arg: ", args);
+      // console.log("arg: ", args);
         expect(comp.users.length).toEqual(v);
     }));
 
-    it(`html should render one user`, async(() => {
-        fixture.detectChanges();
-        const el = fixture.nativeElement.querySelector('p');
-        expect(el.innerText).toContain('user1');
-    }));
-
+    // it(`html should render one user`, async(() => {
+    //     fixture.detectChanges();
+    //     const el = fixture.nativeElement.querySelector('p');
+    //     expect(el.innerText).toContain('user1');
+    // }));
 
     it(`should fetch posts as an Observable`, async(inject([HttpTestingController, UserService],
     (httpClient: HttpTestingController, userService: UserService) => {
 
-      console.log("userSER: ", userService);
-
+      // console.log("userSER: ", userService);
       userService.getUsersFromServer()
         .subscribe((posts: any) => {
-          
-          console.log("posts: ", posts);
 
+          // console.log("posts: ", posts);
           expect(posts.length).toBe(3);
         });
 
       let req = httpMock.expectOne('https://jsonplaceholder.typicode.com/users');
 
-      console.log( "htM : ", httpMock);
-
+      // console.log( "htM : ", httpMock);
       expect(req.request.method).toBe("GET");
 
      req.flush(userService.users);
