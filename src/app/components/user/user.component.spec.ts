@@ -44,8 +44,9 @@ describe('UserComponent', () => {
         // });
 
         comp = TestBed.get(UserComponent);
+        // fixture = TestBed.createComponent(UserComponent);
         // userService = TestBed.get(UserService);
-        // httpMock = TestBed.get(HttpTestingController);
+        httpMock = TestBed.get(HttpTestingController);
 
         console.log("fix: ", fixture, " comp: ", comp);
 
