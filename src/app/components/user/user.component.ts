@@ -7,6 +7,7 @@ import { UserService } from './user.service';
   styleUrls: ['./user.component.sass']
 })
 export class UserComponent {
+  count = 0;
   text = 'user page';
   users;
   usersFromServer;

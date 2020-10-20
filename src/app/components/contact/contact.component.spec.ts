@@ -35,10 +35,10 @@ describe('ContactComponent', () => {
     expect(comp.text).toEqual('contact page');
   }));
 
-  it(`should set submitted to true`, async(() => {
-    comp.onSubmit();
-    expect(comp.submitted).toBeTruthy();
-  }));
+  // it(`should set submitted to true`, async(() => {
+  //   comp.onSubmit();
+  //   expect(comp.submitted).toBeTruthy();
+  // }));
 
   it(`should call the onSubmit method`, async(() => {
     spyOn(comp, 'onSubmit');

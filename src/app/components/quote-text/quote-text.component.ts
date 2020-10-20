@@ -6,5 +6,6 @@ import { Component, Input } from '@angular/core';
     styleUrls: ['./quote-text.component.sass']
 })
 export class QuoteTextComponent {
+    title: string = 'Quote Text';
     @Input() text: string;
 }

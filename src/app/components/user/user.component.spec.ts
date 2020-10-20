@@ -53,6 +53,9 @@ describe('UserComponent', () => {
     //     expect(el.innerText).toContain('user1');
     // }));
 
+    it(`should have as count 0`, async(() => {
+      expect(comp.count).toEqual(0);
+    }));
 
     it(`should fetch posts as an Observable`, async(inject([HttpTestingController, UserService],
     (httpClient: HttpTestingController, userService: UserService) => {
